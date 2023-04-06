@@ -7,7 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 
-@Entity
+//@Entity
 public class Student extends Person   {
 //	@Id
 //	private  Integer id;

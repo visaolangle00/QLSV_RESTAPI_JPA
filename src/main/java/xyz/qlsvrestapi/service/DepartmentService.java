@@ -4,12 +4,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import org.springframework.stereotype.Service;
+
 import jakarta.transaction.Transactional;
 import xyz.qlsvrestapi.model.Company;
 import xyz.qlsvrestapi.model.Department;
 import xyz.qlsvrestapi.model.exception.DepartmentNotFoundException;
 import xyz.qlsvrestapi.repository.DepartmentRepository;
 
+@Service
 public class DepartmentService {
 	private final DepartmentRepository departmentRepository;
 
