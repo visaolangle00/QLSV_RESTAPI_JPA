@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import xyz.qlsvrestapi.model.Company;
@@ -56,11 +58,38 @@ public class CompanyController {
 	    }
 	 
 	 
+//	 @GetMapping
+//	    public ResponseEntity<List<CompanyDto>> getCompanys(){
+//	        List<Company> company = companyService.getCompanys();
+//	        List<CompanyDto> companyDtos = company.stream().map(CompanyDto::from).collect(Collectors.toList());
+//	        return new ResponseEntity<>(companyDtos, HttpStatus.OK);
+//	    }
+	 
+	 //lay theo 1 trang...
+//	 @GetMapping
+//	    public ResponseEntity<Page<CompanyDto>> getProducts(
+//	            @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+//	            @RequestParam(value = "pageSize", defaultValue = "4") int pageSize) {
+//	        Page<CompanyDto> getpages = companyService.getPages(pageNumber, pageSize);
+//	        return ResponseEntity.ok(getpages);
+//	    }
+	 
+	 
 	 @GetMapping
-	    public ResponseEntity<List<CompanyDto>> getCompanys(){
-	        List<Company> company = companyService.getCompanys();
-	        List<CompanyDto> companyDtos = company.stream().map(CompanyDto::from).collect(Collectors.toList());
-	        return new ResponseEntity<>(companyDtos, HttpStatus.OK);
+	    public ResponseEntity<Page<CompanyDto>> getProducts(
+	            @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+	            @RequestParam(value = "pageSize", defaultValue = "4") int pageSize) {
+	        Page<CompanyDto> getpages = companyService.getPages(pageNumber, pageSize);
+	        return ResponseEntity.ok(getpages);
 	    }
+	 
+	 
+//	 @GetMapping("/items")
+//	 public ResponseEntity<List<CompanyDto>> getItems(@RequestParam(defaultValue = "0") int pageNumber,
+//	                                             @RequestParam(defaultValue = "10") int sizeNumber) {
+//	     List<CompanyDto> items = (List<CompanyDto>) companyService.getPages(pageNumber,sizeNumber);
+//	     return new ResponseEntity<>(items, HttpStatus.OK);
+//	 }
+	 
 	
 }

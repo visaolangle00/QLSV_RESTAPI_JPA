@@ -5,18 +5,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.PrimaryKeyJoinColumn;
-import xyz.qlsvrestapi.model.dto.DepartmentDto;
-import xyz.qlsvrestapi.model.dto.PersonDto;
 import xyz.qlsvrestapi.model.dto.TeacherDto;
 
 //@Entity
@@ -96,6 +89,12 @@ public class Teacher extends Person {
 	
 	@ManyToOne
 	private Department department;
+	
+	
+	@OneToMany
+	
+	private List<Project> project;
+	
 
 	public Department getDepartment() {
 		return department;
